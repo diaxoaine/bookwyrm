@@ -369,7 +369,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 CSP_ADDITIONAL_HOSTS = env.list("CSP_ADDITIONAL_HOSTS", [])
 PORT = env.int("PORT", 80)
 
-if DOMAIN == "localhost":
+if DOMAIN in ("localhost", "ky.com"):
     # only run insecurely when testing on localhost
     PROTOCOL = "http"
     SESSION_COOKIE_SECURE = False

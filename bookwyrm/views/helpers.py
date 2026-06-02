@@ -94,7 +94,7 @@ def handle_remote_webfinger(query, unknown_only=False, refresh=False):
             # So the fact that we found a match in the database means no results
             return None
     except models.User.DoesNotExist:
-        url = f"https://{domain}/.well-known/webfinger?resource=acct:{query}"
+        url = f"http://{domain}/.well-known/webfinger?resource=acct:{query}"
         try:
             data = get_data(url)
         except (ConnectorException, HTTPError):
@@ -129,7 +129,7 @@ def subscribe_remote_webfinger(query):
     except IndexError:
         return WebFingerError("invalid_username")
 
-    url = f"https://{domain}/.well-known/webfinger?resource=acct:{query}"
+    url = f"http://{domain}/.well-known/webfinger?resource=acct:{query}"
 
     try:
         data = get_data(url)

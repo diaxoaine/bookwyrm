@@ -34,6 +34,8 @@ class Inbox(View):
     def post(self, request, username=None):
         """only works as POST request"""
         # first check if this server is on our shitlist
+        print(request.body)
+        print("request.body")
         raise_is_blocked_user_agent(request)
 
         # make sure the user's inbox even exists

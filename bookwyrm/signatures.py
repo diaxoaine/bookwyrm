@@ -26,9 +26,15 @@ def create_key_pair():
 def make_signature(method, sender, destination, date, **kwargs):
     """uses a private key to sign an outgoing message"""
     inbox_parts = urlparse(destination)
+    # the Host header omits default ports (80 for http, 443 for https)
+    host = inbox_parts.netloc
+    if (inbox_parts.scheme == "http" and inbox_parts.port == 80) or (
+        inbox_parts.scheme == "https" and inbox_parts.port == 443
+    ):
+        host = inbox_parts.hostname
     signature_headers = [
         f"(request-target): {method} {inbox_parts.path}",
-        f"host: {inbox_parts.netloc}",
+        f"host: {host}",
         f"date: {date}",
     ]
     headers = "(request-target) host date"

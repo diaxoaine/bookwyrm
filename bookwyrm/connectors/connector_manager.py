@@ -187,7 +187,7 @@ def create_connector(
 ) -> None:
     """create a connector to an external bookwyrm server"""
     if instance.application_type == "bookwyrm":
-        get_or_create_connector(f"https://{instance.server_name}")
+        get_or_create_connector(f"http://{instance.server_name}")
 
 
 def raise_not_valid_url(url: str) -> None:

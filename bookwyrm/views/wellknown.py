@@ -52,7 +52,7 @@ def nodeinfo_pointer(_):
             "links": [
                 {
                     "rel": "http://nodeinfo.diaspora.software/ns/schema/2.0",
-                    "href": f"https://{DOMAIN}/nodeinfo/2.0",
+                    "href": f"{BASE_URL}/nodeinfo/2.0",
                 }
             ]
         }

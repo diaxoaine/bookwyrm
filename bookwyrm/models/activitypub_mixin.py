@@ -147,6 +147,8 @@ class ActivitypubMixin:
             )
             else 0
         )
+        print(json.dumps(activity, cls=activitypub.ActivityEncoder))
+        print("json.dumps(activity, cls=activitypub.ActivityEncoder)")
         broadcast_task.apply_async(
             countdown=countdown,
             args=(

@@ -2,15 +2,24 @@ name: dev-wyrm
 services:
   nginx:
     env_file: .env.dev
+  anubis:
+    environment:
+      COOKIE_SECURE: "false"
   web:
     env_file: .env.dev
     volumes:
       - .:/app
+    extra_hosts:
+      - "ky.com:host-gateway"
+      - "ky2.com:host-gateway"
   db-backup-job: !reset null
   celery_worker:
     env_file: .env.dev
     volumes:
       - .:/app
+    extra_hosts:
+      - "ky.com:host-gateway"
+      - "ky2.com:host-gateway"
   celery_beat:
     env_file: .env.dev
     volumes:
